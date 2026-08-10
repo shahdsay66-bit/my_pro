@@ -1,0 +1,30 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Environment files
+.env
+*.env
+!.env.example
+
+# Node / Frontend
+node_modules/
+dist/
+*.log
+npm-debug.log*
+
+# Raw dataset (large, download it yourself per README)
+notebooks/data/*.csv
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
