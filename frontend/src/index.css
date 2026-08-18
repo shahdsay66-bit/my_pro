@@ -1,13 +1,14 @@
 :root {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --text: #f1f5f9;
-  --muted: #94a3b8;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
   --accent: #38bdf8;
   --error: #f87171;
   font-family: "Segoe UI", system-ui, sans-serif;
-  color-scheme: dark;
+  color-scheme: light;
 }
+
 
 * {
   box-sizing: border-box;
@@ -25,3 +26,4 @@ body {
   justify-content: center;
   padding: 40px 16px;
 }
+
