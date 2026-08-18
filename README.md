@@ -1,5 +1,15 @@
 # House Price Prediction — End-to-End ML Web App
 
+
+# Developed By:
+
+## Amira Mohamed Abdelhamid Mohamed
+
+## Nourhan Taha Mohamed Mostafa
+
+## Shahd Elsayed Mohamed Fathy
+
+
 ## Overview
 Notebooks: Handles data cleaning, exploratory analysis, feature processing, and model training. The final pipeline is exported as house_price.pkl.
 
