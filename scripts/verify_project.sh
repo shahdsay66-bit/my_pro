@@ -1,15 +1,3 @@
-#!/usr/bin/env bash
-# One-shot local verification for the House Price Prediction project.
-# Run this from the repo root: bash scripts/verify_project.sh
-#
-# It checks, in order:
-#   1) backend deps install + pytest passes
-#   2) backend server actually boots and /health + /predict respond correctly
-#   3) frontend deps install + `npm run build` succeeds
-#
-# Prints a clear PASS/FAIL summary at the end. If anything fails, copy the
-# full terminal output back so it can be fixed.
-
 set -uo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT_DIR"
@@ -22,17 +10,15 @@ check() {
   local name="$1"
   local status="$2"
   if [ "$status" -eq 0 ]; then
-    RESULTS+=("✅ PASS - $name")
+    RESULTS+=(" PASS - $name")
     PASS=$((PASS + 1))
   else
-    RESULTS+=("❌ FAIL - $name")
+    RESULTS+=(" FAIL - $name")
     FAIL=$((FAIL + 1))
   fi
 }
 
-echo "=============================================="
 echo " 1) Backend: install deps + run pytest"
-echo "=============================================="
 cd "$ROOT_DIR/backend"
 python3 -m venv .venv_verify >/tmp/verify_venv.log 2>&1
 # shellcheck disable=SC1091
@@ -46,9 +32,7 @@ cat /tmp/verify_pytest.log
 check "pytest (backend/tests/)" $PYTEST_STATUS
 
 echo ""
-echo "=============================================="
 echo " 2) Backend: boot the real server + hit the API"
-echo "=============================================="
 if [ ! -f models/house_price.pkl ]; then
   echo "models/house_price.pkl missing — copy it from notebooks/ first."
   check "models/house_price.pkl present" 1
@@ -85,9 +69,7 @@ deactivate
 rm -rf "$ROOT_DIR/backend/.venv_verify"
 
 echo ""
-echo "=============================================="
 echo " 3) Frontend: install deps + production build"
-echo "=============================================="
 cd "$ROOT_DIR/frontend"
 [ -f .env ] || cp .env.example .env
 npm install >/tmp/verify_npm_install.log 2>&1
@@ -99,9 +81,7 @@ tail -20 /tmp/verify_npm_build.log
 check "npm run build" $BUILD_STATUS
 
 echo ""
-echo "=============================================="
 echo " SUMMARY"
-echo "=============================================="
 for r in "${RESULTS[@]}"; do echo "$r"; done
 echo ""
 echo "Passed: $PASS | Failed: $FAIL"
