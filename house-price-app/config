@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+[user]
+	email = you@example.com
+	name = Your Name
+[remote "origin"]
+	url = https://github.com/amiiiramohammed-hub/house-price-app.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[lfs]
+	repositoryformatversion = 0
